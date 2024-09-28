@@ -1,38 +1,37 @@
 <template>
   <div class="container">
     <header class="text-center">
-  <h1>Scarpissima</h1>
-  <h4>Il tuo negozio di scarpe online preferito</h4>
-  <nav>
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <router-link class="nav-link" to="#">Home</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link pagina-scarpe" to="#">Scarpe</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link" to="#">Accessori</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link" to="#">Novità</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link" to="#">Saldi</router-link>
-      </li>
-    </ul>
-  </nav>
+      <h1>Scarpissima</h1>
+      <h4>Il tuo negozio di scarpe online preferito</h4>
+      <nav>
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <router-link class="nav-link" to="#">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link pagina-scarpe" to="#">Scarpe</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="#">Accessori</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="#">Novità</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="#">Saldi</router-link>
+          </li>
+        </ul>
+      </nav>
 
-  <div class="row">
-    <div class="col-md-12 d-flex justify-content-end mb-3">
-      <form @submit.prevent="searchShoe" class="form-inline">
-        <input type="text" v-model="searchQuery" class="form-control search-input" placeholder="Cerca una scarpa" />
-        <button type="submit" class="btn btn-primary">Cerca</button>
-      </form>
-    </div>
-  </div>
-
-</header>
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-end mb-3">
+          <form @submit.prevent="searchShoe" class="form-inline">
+            <input type="text" v-model="searchQuery" class="form-control search-input" placeholder="Cerca una scarpa" />
+            <button type="submit" class="btn btn-primary">Cerca</button>
+          </form>
+        </div>
+      </div>
+    </header>
 
     <div class="row">
       <aside class="col-md-3 filtri">
