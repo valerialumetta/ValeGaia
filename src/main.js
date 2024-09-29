@@ -1,14 +1,14 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router'; //importa il router
-import HomePage from './views/HomePage.vue'; //importa la pagina HomePage.vue
+import ShoesSneakers from './views/ShoesSneakers.vue'; //importa la pagina ShoesSneakers.vue
 import store from './store/index'; // Importa lo store per vuex
 
 const routes = [
   { 
     path: "/",
-    name: "Home Page",
-    component: HomePage,
+    name: "Shoes Sneakers",
+    component: ShoesSneakers,
   },
 ];
 
