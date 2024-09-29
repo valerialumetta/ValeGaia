@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-md-12 d-flex justify-content-end mb-3">
           <form @submit.prevent="searchShoe" class="form-inline">
-            <input type="text" v-model="searchQuery" class="form-control search-input" placeholder="Cerca una scarpa" />
+            <input type="text" v-model="searchQuery" class="form-control search-input" placeholder="Cerca" />
             <button type="submit" class="btn btn-primary">Cerca</button>
           </form>
         </div>
@@ -68,13 +68,31 @@
               <div class="card-body">
                 <h5 class="card-title">{{ shoe.name }}</h5>
                 <p class="card-text">{{ shoe.price }} €</p>
-                <router-link to="#" class="btn btn-primary">Dettagli</router-link>
+                <button @click="selectShoe(shoe)" class="btn btn-primary">Dettagli</button>
               </div>
             </div>
           </div>
         </div>
       </main>
     </div>
+
+    <!-- Finestra modale -->
+    <div v-if="selectedShoe" class="modal" tabindex="-1" role="dialog" style="display: block;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Descrizione</h5>
+            <button type="button" class="close" @click="closeModal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>{{ selectedShoe.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -82,12 +100,13 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'HomePage',
+  name: 'ShoesSneakers',
   data() {
-  return {
-    searchQuery: '',
-  };
-},
+    return {
+      searchQuery: '',
+      selectedShoe: null, // Variabile per la scarpa selezionata
+    };
+  },
   computed: {
     ...mapGetters(['getShoes']),
     filteredShoes() {
@@ -97,10 +116,18 @@ export default {
     },
   },
   methods: {
-  searchShoe() {
-    console.log(this.searchQuery);
+    searchShoe() {
+      console.log(this.searchQuery);
+    },
+    selectShoe(shoe) {
+      // Imposta la scarpa selezionata per mostrarne la descrizione
+      this.selectedShoe = shoe;
+    },
+    closeModal() {
+      // Chiude la finestra modale
+      this.selectedShoe = null;
+    },
   },
-},
 };
 </script>
 
@@ -119,10 +146,12 @@ header {
   border-radius: 5px;
   color: white;
 }
+
 .nav-link:hover {
   transition: 0.3s ease;
   color: white;
 }
+
 .pagina-scarpe {
   background-color: rgb(2, 123, 255);
   border-radius: 5px;
@@ -139,7 +168,40 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 .card {
   margin-bottom: 20px;
+}
+
+/* Stili del Modale */
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-dialog {
+  width: 500px;
+}
+
+.modal-content {
+  padding: 20px;
+  background-color: white;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  padding: 10px 0;
 }
 </style>
